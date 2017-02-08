@@ -1,0 +1,10 @@
+article{
+    background-color: #FAFAFA;
+    border-radius: 10px;
+    padding:10px;
+    border: #FE642E 1px solid;
+}
+.navbar-default{
+    border-radius: 0px!important;
+}
+

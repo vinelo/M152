@@ -1,17 +1,17 @@
 <?php include 'layout/header.php' ?>
-<form action="?action=home" method="post" class="form-horizontal" enctype="multipart/form-data">
+<form action="?action=addPost" method="post" class="form-horizontal" enctype="multipart/form-data">
     <!-- Input de l'image -->
     <div class="form-group">
-        <label for="Image" class="col-sm-3 control-label">Description</label>
+        <label for="Image" class="col-sm-3 control-label">Image</label>
         <div class="col-sm-9">
-            <input type="file">
+            <input type="file" name="image">
         </div>
     </div>
     <!-- Input de la description -->
     <div class="form-group">
-        <label for="Commentaire" class="col-sm-3 control-label">Description</label>
+        <label for="Commentaire" class="col-sm-3 control-label">Commentaire</label>
         <div class="col-sm-9">
-            <textarea class="form-control" rows="6" name="description"></textarea>
+            <textarea class="form-control" rows="6" name="comment"></textarea>
         </div>
     </div>
 
