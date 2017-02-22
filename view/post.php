@@ -4,7 +4,7 @@
     <div class="form-group">
         <label for="Image" class="col-sm-3 control-label">Image</label>
         <div class="col-sm-9">
-            <input type="file" name="image">
+            <input type="file" name="image[]" accept="image/gif, image/jpeg, image/png">
         </div>
     </div>
     <!-- Input de la description -->
