@@ -9,20 +9,18 @@
     </div>
 
     <section>
-        <?php foreach ($posts as $post) { ?>
+        <?php foreach ($posts as $post) { var_dump($post)?>
         <br/>
             <article class="row">
-                <?php foreach($post['image'] as $media) {?>
+                <?php foreach($post['nomFichierMedia'] as $media) {?>
                     <figure class="col-md-8 col-md-offset-2"><img src="./image/<?= $post['idMedia'] ?>"  alt="<?= $post['nomMedia'] ?>" class="img-thumbnail img-responsive center-block"> </figure>
                 <?php }?>
                     <figcaption class="col-md-10 col-md-offset-2"><?= $post['commentaire'] ?></figcaption>   
-                
+                    <pre>
+                        <?= var_dump($post)?>
+                    </pre>
             </article>
         
         <?php } ?>
     </section>
-
-
-
-
 </div>
