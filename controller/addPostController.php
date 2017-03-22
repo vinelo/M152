@@ -17,7 +17,9 @@ if (isset($_POST['addPost'])) {
     
     if(empty($errors))
     {
+
         addPost($commentaire, $image);
+
         header('location:?action=home');
             exit;
     }

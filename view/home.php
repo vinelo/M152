@@ -9,15 +9,15 @@
     </div>
 
     <section>
-        <?php foreach ($posts as $post) { var_dump($post)?>
+        <?php foreach ($posts as $post) { ?>
         <br/>
             <article class="row">
-                <?php foreach($post['nomFichierMedia'] as $media) {?>
-                    <figure class="col-md-8 col-md-offset-2"><img src="./image/<?= $post['idMedia'] ?>"  alt="<?= $post['nomMedia'] ?>" class="img-thumbnail img-responsive center-block"> </figure>
+                <?php $images = getImages($post['idPost'])?>
+                <?php foreach($images as $image) {?>
+                    <figure class="col-md-8 col-md-offset-2"><img src="./image/<?= $image['idMedia'] ?>"  alt="<?= $image['nomMedia'] ?>" class="img-thumbnail img-responsive center-block"> </figure>
                 <?php }?>
                     <figcaption class="col-md-10 col-md-offset-2"><?= $post['commentaire'] ?></figcaption>   
                     <pre>
-                        <?= var_dump($post)?>
                     </pre>
             </article>
         

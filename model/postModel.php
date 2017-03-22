@@ -10,7 +10,8 @@ function getPost() {
     return $result;
 }
 function getImages($idPost){
-      $query = $database->prepare("SELECT * FROM media
+    $database = connectDb();
+    $query = $database->prepare("SELECT * FROM media
                                 WHERE media.idPost = :idPost");
     $query->execute(array(
         'idPost' => $idPost
@@ -32,28 +33,28 @@ function addPost($commentaire, $images) {
         $lastid = $database->lastInsertId();
         if ($lastid == !NULL) {
             var_dump($images);
-            //foreach ($images as $image)
-            //{
-                addImage($images, $lastid);
-            //}
+            $count = count($images['name']);
+            for($i = 0; $i < $count; $i++)
+            {
+                addImage($images['name'][$i],$images['type'][$i],$images['tmp_name'][$i], $lastid);
+            }
         }
     }
 }
 
-function addImage($image, $lastid) {
+function addImage($imageName, $imageType, $imageTmp, $lastid) {
     $imageServer = uniqid();
     $database = connectDb();
-    var_dump($image);
     $query = $database->prepare("INSERT INTO `dbblog`.`media` (`idMedia`, `nomFichierMedia`, `typeMedia`, `idPost`) VALUES (:idMedia, :nomFichierMedia, :typeMedia, :idPost)");
     if($query->execute(
             array(
                 'idMedia' => $imageServer,
-                'nomFichierMedia' => $image['name'],
-                'typeMedia' => $image['type'],
+                'nomFichierMedia' => $imageName,
+                'typeMedia' => $imageType,
                 'idPost' => $lastid
     )))
     {
-        if (move_uploaded_file($image['tmp_name'], "image/" . $imageServer)) {
+        if (move_uploaded_file($imageTmp, "image/" . $imageServer)) {
         return $database->lastInsertId();
     } else {
         return false;
