@@ -4,7 +4,7 @@ include 'databaseConnection.php';
 
 function getPost() {
     $database = connectDb();
-    $query = $database->prepare("SELECT * FROM post");
+    $query = $database->prepare("SELECT * FROM post order by datePost Desc");
     $query->execute();
     $result = $query->fetchAll();
     return $result;
@@ -23,7 +23,7 @@ function getImages($idPost){
 function addPost($commentaire, $images) {
 
     $database = connectDb();
-    $time = date("m.d.Y H:i:s", strtotime("now"));
+    $time = date("Y-m-d H:i:s");
 
     $query = $database->prepare("INSERT INTO `dbblog`.`post` ( commentaire, datePost) VALUES (:commentaire, :datePost)");
     if ($query->execute(array(
